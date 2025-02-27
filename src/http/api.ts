@@ -50,7 +50,7 @@ export type GetRanking200Item = {
  * @summary Subscribe to event
  */
 export const getPostSubscriptionsUrl = () => {
-  return `http://127.0.0.1:3333/subscriptions`
+  return 'http://127.0.0.1:3333/subscriptions'
 }
 
 export const postSubscriptions = async (
@@ -183,7 +183,7 @@ export const getSubscribersSubscriberIdRankingPosition = async (
  * @summary Get list ranking
  */
 export const getGetRankingUrl = () => {
-  return `http://127.0.0.1:3333/ranking`
+  return 'http://127.0.0.1:3333/ranking'
 }
 
 export const getRanking = async (

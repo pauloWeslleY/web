@@ -12,7 +12,7 @@ export function useSubscriptionForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<SubscriptionFormProps>({
     resolver: zodResolver(SubscriptionSchema),
   })
@@ -34,5 +34,6 @@ export function useSubscriptionForm() {
     register,
     onSubscribe,
     handleSubmit,
+    isSubmitting,
   }
 }

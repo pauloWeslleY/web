@@ -6,7 +6,8 @@ import { ArrowRightIcon, MailIcon, UserIcon } from 'lucide-react'
 import { useSubscriptionForm } from './hooks/use-subscription-form'
 
 export function SubscriptionForm() {
-  const { errors, register, onSubscribe, handleSubmit } = useSubscriptionForm()
+  const { errors, register, isSubmitting, onSubscribe, handleSubmit } =
+    useSubscriptionForm()
 
   return (
     <form
@@ -44,8 +45,8 @@ export function SubscriptionForm() {
       </div>
 
       <Button type="submit">
-        Confirmar
-        <ArrowRightIcon />
+        {isSubmitting ? 'Loading...' : 'Confirmar'}
+        {!isSubmitting && <ArrowRightIcon />}
       </Button>
     </form>
   )
