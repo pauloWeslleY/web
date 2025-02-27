@@ -1,23 +1,50 @@
+import {
+  getSubscribersSubscriberIdInviteClicks,
+  getSubscribersSubscriberIdInvitesCount,
+  getSubscribersSubscriberIdRankingPosition,
+} from '@/http/api'
 import { BadgeCheckIcon, MedalIcon, MousePointerClickIcon } from 'lucide-react'
+import type { ElementType } from 'react'
 
-export function Stats() {
-  const loadStats = [
+interface GetListStatsSubscriber {
+  label: string
+  value: number | string
+  icon: ElementType
+}
+
+interface StatsProps {
+  subscriberId: string
+}
+
+async function getListStatsSubscriber({
+  subscriberId,
+}: StatsProps): Promise<GetListStatsSubscriber[]> {
+  const accessCount = await getSubscribersSubscriberIdInviteClicks(subscriberId)
+  const inviteCount = await getSubscribersSubscriberIdInvitesCount(subscriberId)
+  const rankingCount =
+    await getSubscribersSubscriberIdRankingPosition(subscriberId)
+
+  return [
     {
       icon: MousePointerClickIcon,
-      value: '942',
+      value: accessCount.count,
       label: 'Acessos ao link',
     },
     {
       icon: BadgeCheckIcon,
-      value: '875',
-      label: 'Acessos ao link',
+      value: inviteCount.count,
+      label: 'Inscrições feitas',
     },
     {
       icon: MedalIcon,
-      value: '3º',
+      value: `${rankingCount.position ?? 0}º`,
       label: 'Posição no ranking',
     },
   ]
+}
+
+export async function Stats({ subscriberId }: StatsProps) {
+  const loadStats = await getListStatsSubscriber({ subscriberId })
 
   return (
     <div className="grid gap-3 md:grid-cols-3">

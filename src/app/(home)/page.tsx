@@ -10,7 +10,7 @@ export default function HomePage() {
   return (
     <div className="min-h-dvh flex justify-center gap-16 flex-col">
       <div className="flex flex-col gap-8 items-center md:items-start">
-        <Image src={Logotipo} alt="devstage" width={108.5} height={30} />
+        <Image src={Logotipo} alt="DevStage" width={108.5} height={30} />
 
         <h1 className="text-4xl text-center leading-none font-heading font-medium flex flex-col md:text-7xl md:text-left">
           <span className="text-blue">CodeCraft</span> Summit 2025
@@ -28,7 +28,7 @@ export default function HomePage() {
               AO VIVO
             </span>
           </div>
-          <p className="tex-gray-300 leading-relaxed text-sm md:text-base">
+          <p className="text-gray-300 leading-relaxed text-sm md:text-base">
             Um evento feito por e para pessoas desenvolvedoras apaixonadas por
             criar soluções inovadoras e compartilhar conhecimento. Vamos
             mergulhar nas tendências mais recentes em desenvolvimento de

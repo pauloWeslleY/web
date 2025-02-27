@@ -2,30 +2,11 @@
 
 import { Button } from '@/components/button'
 import { Input } from '@/components/input'
-import { zodResolver } from '@hookform/resolvers/zod'
 import { ArrowRightIcon, MailIcon, UserIcon } from 'lucide-react'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-
-const subscriptionSchema = z.object({
-  name: z.string().min(2, 'Digite seu nome completo'),
-  email: z.string().email('Digite um e-mail válido'),
-})
-
-type SubscriptionFormValues = z.infer<typeof subscriptionSchema>
+import { useSubscriptionForm } from './hooks/use-subscription-form'
 
 export function SubscriptionForm() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<SubscriptionFormValues>({
-    resolver: zodResolver(subscriptionSchema),
-  })
-
-  function onSubscribe(data: SubscriptionFormValues) {
-    console.log(data)
-  }
+  const { errors, register, onSubscribe, handleSubmit } = useSubscriptionForm()
 
   return (
     <form
