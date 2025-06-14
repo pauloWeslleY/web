@@ -1,10 +1,11 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
+import Image from "next/image";
 
-import Logotipo from '@/assets/logo.svg'
-import { RadioIcon } from 'lucide-react'
-import { SubscriptionForm } from './subscription-form'
+import Logotipo from "@/assets/logo.svg";
+import { RadioIcon } from "lucide-react";
+import { SubscriptionForm } from "./subscription-form";
+import { Suspense } from "react";
 
 export default function HomePage() {
   return (
@@ -40,8 +41,10 @@ export default function HomePage() {
           </p>
         </div>
 
-        <SubscriptionForm />
+        <Suspense fallback={<span>Carregando...</span>}>
+          <SubscriptionForm />
+        </Suspense>
       </div>
     </div>
-  )
+  );
 }
